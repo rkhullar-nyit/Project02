@@ -1,0 +1,65 @@
+import java.util.ArrayList; 
+public class LinkedList<T> 
+{ private LinkedListNode<T> head = null, tail = null; 
+protected int size = 0; 
+public void addHead(T data) 
+{ LinkedListNode<T> oldHead = this.head; 
+LinkedListNode<T> newHead = new LinkedListNode<>(data); 
+newHead.next = oldHead; 
+newHead.prev = null; 
+if (oldHead!= null) { 
+  oldHead.prev = newHead; 
+  }
+  this.head = newHead; 
+if (this.tail == null) { 
+this.tail = newHead; 
+} 
+size ++; 
+} public void addTail(T data) 
+{ LinkedListNode<T> newTail = new LinkedListNode<>(data); 
+LinkedListNode<T> oldTail = this.tail; 
+newTail.prev = oldTail; 
+newTail.next = null; 
+if (oldTail != null) { 
+oldTail.next = newTail; 
+} 
+this.tail = newTail; 
+if (this.head == null) { 
+this.head = newTail; 
+} 
+size ++; 
+} public T delHead() 
+{ LinkedListNode<T> oldHead = this.head; 
+if (oldHead == null) { 
+return null; 
+} 
+LinkedListNode<T> newHead = oldHead.next; 
+if(newHead != null) { 
+newHead.prev = null; 
+}
+this.head = newHead; 
+size --; 
+return oldHead.getData(); 
+} 
+public T delTail() 
+{ LinkedListNode<T> oldTail = this.tail; 
+if (oldTail == null) { 
+return null; 
+}
+LinkedListNode<T> newTail = oldTail.prev; 
+if (newTail != null) { 
+newTail.next = null; 
+}
+this.tail = newTail; 
+size --; 
+return oldTail.getData(); 
+}
+public String toString() 
+{ ArrayList<String> returnVal = new ArrayList<>(); 
+LinkedListNode<T> nextNode = this.head; 
+while (nextNode!= null ) { 
+returnVal.add(nextNode.getData().toString()); 
+nextNode = nextNode.next; 
+}
+return returnVal.toString(); 
+} } 
