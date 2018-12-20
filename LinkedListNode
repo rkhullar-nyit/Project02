@@ -1,0 +1,23 @@
+
+class 
+LinkedListNode<T> 
+{ 
+private T data; 
+public LinkedListNode<T> prev, 
+next; 
+public LinkedListNode(T data) 
+{ this.data = data; 
+} public void setData(T data) { 
+this.data = data; 
+} public T getData() 
+{ return this.data; 
+} public boolean hasPrev() 
+{ return prev != null; 
+} public boolean hasNext() 
+{ return next != null; 
+} 
+public String toString() 
+{ return String.format("<%s>", 
+data); 
+} 
+} 
